@@ -27,7 +27,7 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/wrappers.proto";
 import "networking/v1alpha3/circuit_breaker_policy.proto";
 
-option go_package = "/api/networking/v1alpha3";
+option go_package = "github.com/dubml/api/networking/v1alpha3";
 
 // FaultInjectionPolicy injects controlled faults for calls to target Services.
 //

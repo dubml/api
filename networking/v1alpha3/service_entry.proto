@@ -26,7 +26,7 @@ import "google/api/field_behavior.proto";
 import "networking/v1alpha3/workload_entry.proto";
 import "type/v1alpha3/selector.proto";
 
-option go_package = "github.com/kdubbo/api/networking/v1alpha3";
+option go_package = "github.com/dubml/api/networking/v1alpha3";
 
 // ServiceEntry adds services that are not discovered from Kubernetes.
 //

@@ -26,7 +26,7 @@ import "google/api/field_behavior.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/wrappers.proto";
 
-option go_package = "/api/networking/v1alpha3";
+option go_package = "github.com/dubml/api/networking/v1alpha3";
 
 // CircuitBreakerPolicy attaches circuit breaking settings to Gateway API
 // backend targets, typically Services referenced by HTTPRoute backendRefs.
@@ -56,7 +56,7 @@ message CircuitBreakerPolicy {
   repeated PolicyTargetReference target_refs = 1 [(google.api.field_behavior) = REQUIRED];
 
   // Connection pool limits. These provide the request-volume side of circuit
-  // breaking, matching the knobs used by Envoy and Istio clusters.
+  // breaking, matching the knobs used by Envoy clusters.
   ConnectionPoolSettings connection_pool = 2;
 
   // Outlier detection controls passive ejection of failing endpoints.

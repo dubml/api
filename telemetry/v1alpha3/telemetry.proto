@@ -25,7 +25,7 @@ package dubbo.telemetry.v1alpha3;
 import "google/protobuf/wrappers.proto";
 import "type/v1alpha3/selector.proto";
 
-option go_package = "github.com/kdubbo/api/telemetry/v1alpha3";
+option go_package = "github.com/dubml/api/telemetry/v1alpha3";
 
 // Telemetry defines how telemetry is generated for workloads within a mesh.
 //

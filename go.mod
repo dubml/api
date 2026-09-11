@@ -1,4 +1,4 @@
-module github.com/kdubbo/api
+module github.com/dubml/api
 
 go 1.25.0
 

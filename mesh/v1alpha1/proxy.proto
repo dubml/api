@@ -21,7 +21,7 @@ package dubbo.mesh.v1alpha1;
 import "google/protobuf/duration.proto";
 import "google/protobuf/wrappers.proto";
 
-option go_package = "/api/mesh/v1alpha1";
+option go_package = "github.com/dubml/api/mesh/v1alpha1";
 
 enum AuthenticationPolicy {
   NONE = 0;

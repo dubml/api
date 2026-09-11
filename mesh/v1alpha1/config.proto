@@ -21,7 +21,7 @@ package dubbo.mesh.v1alpha1;
 import "google/protobuf/duration.proto";
 import "proxy.proto";
 
-option go_package = "/api/mesh/v1alpha1";
+option go_package = "github.com/dubml/api/mesh/v1alpha1";
 
 // MeshConfig defines mesh-wide runtime settings for the Dubbo service mesh.
 message MeshConfig {
@@ -49,7 +49,7 @@ message MeshConfig {
 
   repeated string default_service_export_to = 7;
 
-  // Legacy Istio-style traffic resources were removed in favor of Gateway API.
+  // Legacy L7 traffic resources were removed in favor of Gateway API.
   reserved 8, 9;
 
   string root_namespace = 10;

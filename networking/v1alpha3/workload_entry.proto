@@ -22,7 +22,7 @@ syntax = "proto3";
 
 package dubbo.networking.v1alpha3;
 
-option go_package = "github.com/kdubbo/api/networking/v1alpha3";
+option go_package = "github.com/dubml/api/networking/v1alpha3";
 
 // WorkloadEntry describes a VM, bare-metal process, or other workload that
 // participates in services declared by ServiceEntry.

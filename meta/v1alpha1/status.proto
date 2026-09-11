@@ -18,7 +18,7 @@ syntax = "proto3";
 
 package dubbo.meta.v1alpha1;
 
-option go_package = "/api/meta/v1alpha1";
+option go_package = "github.com/dubml/api/meta/v1alpha1";
 
 message DubboStatus {
   // +optional

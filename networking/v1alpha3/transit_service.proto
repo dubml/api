@@ -16,8 +16,8 @@
 
 syntax = "proto3";
 
-// $schema: dubbo.networking.v1alpha3.DxgateService
-// $title: Dxgate Service
+// $schema: dubbo.networking.v1alpha3.TransitService
+// $title: Transit Service
 // $description: Mesh-native LLM, MCP, or A2A backend referenced by Gateway API routes.
 
 package dubbo.networking.v1alpha3;
@@ -25,27 +25,27 @@ package dubbo.networking.v1alpha3;
 import "google/api/field_behavior.proto";
 import "google/protobuf/duration.proto";
 
-option go_package = "/api/networking/v1alpha3";
+option go_package = "github.com/dubml/api/networking/v1alpha3";
 
-// DxgateService is the single mesh API for non-standard application protocols
-// served by dxgate. Ordinary HTTP backends remain Kubernetes Services.
+// TransitService is the single mesh API for non-standard application protocols
+// served by transit. Ordinary HTTP backends remain Kubernetes Services.
 //
-// HTTPRoute backendRefs select a DxgateService exactly as they select a core
+// HTTPRoute backendRefs select a TransitService exactly as they select a core
 // Service. dubbod validates the reference, resolves its Kubernetes targets and
-// policies, and delivers the compiled configuration to dxgate over xDS. The
+// policies, and delivers the compiled configuration to transit over xDS. The
 // data plane does not watch a second, private CRD API.
 //
 // <!-- crd generation tags
-// +cue-gen:DxgateService:groupName:networking.dubbo.apache.org
-// +cue-gen:DxgateService:versions:v1alpha3
-// +cue-gen:DxgateService:storageVersion
-// +cue-gen:DxgateService:annotations:helm.sh/resource-policy=keep
-// +cue-gen:DxgateService:labels:app=dubbo,chart=dubbo,dubbo=networking,heritage=Tiller,release=dubbo
-// +cue-gen:DxgateService:subresource:status
-// +cue-gen:DxgateService:scope:Namespaced
-// +cue-gen:DxgateService:resource:categories=dubbo,networking,shortNames=dxsvc,plural=dxgateservices,singular=dxgateservice
-// +cue-gen:DxgateService:preserveUnknownFields:false
-// +cue-gen:DxgateService:printerColumn:name=Age,type=date,JSONPath=.metadata.creationTimestamp,description="CreationTimestamp is a timestamp representing the server time when this object was created."
+// +cue-gen:TransitService:groupName:networking.dubbo.apache.org
+// +cue-gen:TransitService:versions:v1alpha3
+// +cue-gen:TransitService:storageVersion
+// +cue-gen:TransitService:annotations:helm.sh/resource-policy=keep
+// +cue-gen:TransitService:labels:app=dubbo,chart=dubbo,dubbo=networking,heritage=Tiller,release=dubbo
+// +cue-gen:TransitService:subresource:status
+// +cue-gen:TransitService:scope:Namespaced
+// +cue-gen:TransitService:resource:categories=dubbo,networking,shortNames=transitsvc,plural=transitservices,singular=transitservice
+// +cue-gen:TransitService:preserveUnknownFields:false
+// +cue-gen:TransitService:printerColumn:name=Age,type=date,JSONPath=.metadata.creationTimestamp,description="CreationTimestamp is a timestamp representing the server time when this object was created."
 // -->
 //
 // <!-- go code generation tags
@@ -54,7 +54,7 @@ option go_package = "/api/networking/v1alpha3";
 // +genclient
 // +k8s:deepcopy-gen=true
 // -->
-message DxgateService {
+message TransitService {
   oneof service {
     AIService ai = 1;
     MCPService mcp = 2;
@@ -62,10 +62,10 @@ message DxgateService {
   }
 
   // Policies applied to every HTTPRoute reference to this service.
-  DxgateServicePolicies policies = 4;
+  TransitServicePolicies policies = 4;
 }
 
-// AIService exposes an OpenAI-compatible client surface while allowing dxgate
+// AIService exposes an OpenAI-compatible client surface while allowing transit
 // to translate to a native provider dialect.
 message AIService {
   AIProvider provider = 1 [(google.api.field_behavior) = REQUIRED];
@@ -145,7 +145,7 @@ message BackendReference {
   // Kubernetes Service name.
   string name = 1 [(google.api.field_behavior) = REQUIRED];
 
-  // Defaults to the DxgateService namespace.
+  // Defaults to the TransitService namespace.
   string namespace = 2;
 }
 
@@ -154,7 +154,7 @@ message SecretKeyReference {
   string key = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
-message DxgateServicePolicies {
+message TransitServicePolicies {
   // Client authentication at the gateway.
   ClientAuthPolicy auth = 1;
   RateLimitPolicy rate_limit = 2;
